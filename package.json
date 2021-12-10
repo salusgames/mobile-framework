@@ -1,0 +1,12 @@
+{
+  "name": "com.salusgames.mobileframework",
+  "version": "1.0.0",
+  "displayName": "Mobile Framework",
+  "description": "This package simplifies common used packages and systems used in mobile games",
+  "unity": "2019.1",
+  "author": {
+    "name": "Salus Games",
+    "email": "support@salusgames.com",
+    "url": "https://www.salusgames.com"
+  }
+}

@@ -1,0 +1,19 @@
+{
+	"name": "SalusGames.MobileFramework.Runtime",
+	"rootNamespace": "SalusGames.MobileFramework",
+	"references": [
+		"Google.Android.AppBundle.Editor",
+		"Google.Play.Common",
+		"Google.Play.Core",
+		"Google.Play.Review"
+	],
+	"includePlatforms": [],
+	"excludePlatforms": [],
+	"allowUnsafeCode": false,
+	"overrideReferences": false,
+	"precompiledReferences": [],
+	"autoReferenced": true,
+	"defineConstraints": [],
+	"versionDefines": [],
+	"noEngineReferences": false
+}
