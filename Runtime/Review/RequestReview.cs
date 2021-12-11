@@ -18,7 +18,13 @@ namespace SalusGames.MobileFramework.Review
         private PlayReviewInfo _playReviewInfo;
         #endif
 
-        public void RequestStoreReview()
+        public static void Request()
+        {
+            var gameObject = new GameObject("Review Requester");
+            gameObject.AddComponent<RequestReview>().RequestStoreReview();
+        }
+        
+        private void RequestStoreReview()
         {
             #if UNITY_ANDROID
             StartCoroutine(RequestGoogleStoreReview());
@@ -26,6 +32,7 @@ namespace SalusGames.MobileFramework.Review
             
             #if UNITY_IOS
             Device.RequestStoreReview();
+            Debug.Log("Showing iOS review prompt");
             #endif
         }
 
@@ -38,7 +45,6 @@ namespace SalusGames.MobileFramework.Review
             yield return requestFlowOperation;
             if (requestFlowOperation.Error != ReviewErrorCode.NoError)
             {
-                // Log error. For example, using requestFlowOperation.Error.ToString().
                 Debug.Log(requestFlowOperation.Error.ToString());
                 yield break;
             }
@@ -49,10 +55,11 @@ namespace SalusGames.MobileFramework.Review
             _playReviewInfo = null; // Reset the object
             if (launchFlowOperation.Error != ReviewErrorCode.NoError)
             {
-                // Log error. For example, using requestFlowOperation.Error.ToString().
                 Debug.Log(requestFlowOperation.Error.ToString());
                 yield break;
             }
+
+            Debug.Log("Showing Google Play review prompt");
         }
         #endif
     }
