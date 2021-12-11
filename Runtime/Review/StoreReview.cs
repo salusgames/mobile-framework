@@ -11,7 +11,7 @@ using UnityEngine.iOS;
 
 namespace SalusGames.MobileFramework.Review
 {
-    public class RequestReview : MonoBehaviour
+    public class StoreReview : MonoBehaviour
     {
         #if UNITY_ANDROID
         private ReviewManager _reviewManager;
@@ -20,11 +20,11 @@ namespace SalusGames.MobileFramework.Review
 
         public static void Request()
         {
-            var gameObject = new GameObject("Review Requester");
-            gameObject.AddComponent<RequestReview>().RequestStoreReview();
+            var gameObject = new GameObject("Store Review");
+            gameObject.AddComponent<StoreReview>().StartReviewFlow();
         }
         
-        private void RequestStoreReview()
+        private void StartReviewFlow()
         {
             #if UNITY_ANDROID
             StartCoroutine(RequestGoogleStoreReview());
