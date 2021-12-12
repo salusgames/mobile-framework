@@ -3,7 +3,7 @@ using UnityEngine.Advertisements;
 
 namespace SalusGames.MobileFramework.Advertisements.Unity
 {
-    public class UnityInterstitialAd : IUnityAdsLoadListener, IUnityAdsListener
+    internal class UnityInterstitialAd : IUnityAdsLoadListener, IUnityAdsListener
     {
         private readonly string _adUnitId;
 
