@@ -5,7 +5,8 @@
   "description": "This package simplifies common used packages and systems used in mobile games",
   "unity": "2019.1",
   "dependencies": {
-    "com.unity.ads": "3.7.5"
+    "com.unity.ads": "3.7.5",
+    "com.unity.ads.ios-support": "1.2.0"
   },
   "author": {
     "name": "Salus Games",
