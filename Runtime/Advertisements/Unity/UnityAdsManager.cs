@@ -21,7 +21,14 @@ namespace SalusGames.MobileFramework.Advertisements.Unity
 
         private void Awake()
         {
+            if (_instance != null)
+            {
+                Destroy(gameObject);
+                return;
+            }
+            
             _instance = this;
+            DontDestroyOnLoad(gameObject);
             AskForTrackingIos();
             InitializeAds();
         }
