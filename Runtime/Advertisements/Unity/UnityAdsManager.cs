@@ -8,12 +8,13 @@ namespace SalusGames.MobileFramework.Advertisements.Unity
 {
     public class UnityAdsManager : MonoBehaviour, IUnityAdsInitializationListener
     {
-        [SerializeField] string _iosGameId;
-        [SerializeField] string _androidGameId;
+        [SerializeField] private string _iosGameId;
+        [SerializeField] private string _androidGameId;
         [SerializeField] private string _iosInterstitialAdId;
         [SerializeField] private string _androidInterstitialAdId;
-        [SerializeField] bool _testMode;
-        [SerializeField] bool _enablePerPlacementMode = true;
+        [SerializeField] private bool _testMode;
+        [SerializeField] private bool _enablePerPlacementMode = true;
+        [SerializeField] private float _delayInitialAd;
 
         private static UnityAdsManager _instance;
         private static UnityInterstitialAd _unityInterstitialAd;
@@ -31,6 +32,8 @@ namespace SalusGames.MobileFramework.Advertisements.Unity
             DontDestroyOnLoad(gameObject);
             AskForTrackingIos();
             InitializeAds();
+            
+            StartInterstitialAdWaitTimer(_delayInitialAd);
         }
 
         private void AskForTrackingIos()
@@ -64,18 +67,23 @@ namespace SalusGames.MobileFramework.Advertisements.Unity
         /// <summary>
         /// Show an Interstitial Ad
         /// </summary>
-        /// <param name="ignoreTime">How long to ignore successive calls in seconds</param>
-        public static void ShowInterstitialAd(int ignoreTime)
+        /// <param name="waitTime">How long to wait before another ad can be shown</param>
+        public static void ShowInterstitialAd(int waitTime)
         {
             if (_ignoreInterstitialAdCall)
             {
-                Debug.Log("Won't show an ad as not enough time has passed since last ad was shown");
+                Debug.Log("Won't show an ad as not enough time has passed");
                 return;
             }
-
-            _ignoreInterstitialAdCall = true;
-            _instance.Invoke(nameof(ResetIgnoreInterstitialAdCall), ignoreTime);
+            
+            StartInterstitialAdWaitTimer(waitTime);
             _unityInterstitialAd.ShowAd();
+        }
+
+        private static void StartInterstitialAdWaitTimer(float time)
+        {
+            _ignoreInterstitialAdCall = true;
+            _instance.Invoke(nameof(ResetIgnoreInterstitialAdCall), time);
         }
 
         private void ResetIgnoreInterstitialAdCall()
