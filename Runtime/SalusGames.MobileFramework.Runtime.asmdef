@@ -6,7 +6,8 @@
         "Google.Play.Common",
         "Google.Play.Core",
         "Google.Play.Review",
-        "UnityEngine.Advertisements"
+        "UnityEngine.Advertisements",
+        "Unity.Advertisement.IosSupport"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
