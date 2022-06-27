@@ -3,7 +3,7 @@ using UnityEngine.Advertisements;
 
 namespace SalusGames.MobileFramework.Advertisements.Unity
 {
-    internal class UnityInterstitialAd : IUnityAdsLoadListener, IUnityAdsListener
+    internal class UnityInterstitialAd : IUnityAdsLoadListener, IUnityAdsShowListener
     {
         private readonly string _adUnitId;
 
@@ -40,23 +40,18 @@ namespace SalusGames.MobileFramework.Advertisements.Unity
             Time.timeScale = 1;
         }
 
-        public void OnUnityAdsReady(string placementId)
-        {
-            Debug.Log("Ad Ready: " + _adUnitId);
-        }
-
-        public void OnUnityAdsDidError(string message)
-        {
-            Debug.Log("Ad error:" + _adUnitId);
-            Time.timeScale = 1;
-        }
-
-        public void OnUnityAdsDidFinish(string placementId, ShowResult showResult)
-        {
-            Time.timeScale = 1;
+		public void OnUnityAdsShowFailure(string adUnitId, UnityAdsShowError error, string message)
+    	{
+        	Debug.Log($"Error showing Ad Unit {adUnitId}: {error.ToString()} - {message}");
+        	Time.timeScale = 1;
+    	}
+ 
+    	public void OnUnityAdsShowStart(string adUnitId) { }
+   	 	public void OnUnityAdsShowClick(string adUnitId) { }
+    	public void OnUnityAdsShowComplete(string adUnitId, UnityAdsShowCompletionState showCompletionState) 
+		{ 
+			Time.timeScale = 1;
             Debug.Log("Ad Finished" + _adUnitId);
-        }
-        
-        public void OnUnityAdsDidStart(string placementId) { }
+		}
     }
 }
