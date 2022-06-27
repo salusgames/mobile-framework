@@ -13,7 +13,6 @@ namespace SalusGames.MobileFramework.Advertisements.Unity
         [SerializeField] private string _iosInterstitialAdId;
         [SerializeField] private string _androidInterstitialAdId;
         [SerializeField] private bool _testMode;
-        [SerializeField] private bool _enablePerPlacementMode = true;
         [SerializeField] private float _delayInitialAd;
 
         private static UnityAdsManager _instance;
@@ -49,7 +48,7 @@ namespace SalusGames.MobileFramework.Advertisements.Unity
         private void InitializeAds()
         {
             var gameId = (Application.platform == RuntimePlatform.IPhonePlayer) ? _iosGameId : _androidGameId;
-            Advertisement.Initialize(gameId, _testMode, _enablePerPlacementMode, this);
+            Advertisement.Initialize(gameId, _testMode, this);
         }
 
         public void OnInitializationComplete()
@@ -72,7 +71,7 @@ namespace SalusGames.MobileFramework.Advertisements.Unity
         {
             if (_ignoreInterstitialAdCall)
             {
-                Debug.Log("Won't show an ad as not enough time has passed");
+                Debug.Log("Won't show an Ad as not enough time has passed");
                 return;
             }
             
@@ -83,12 +82,14 @@ namespace SalusGames.MobileFramework.Advertisements.Unity
         private static void StartInterstitialAdWaitTimer(float time)
         {
             _ignoreInterstitialAdCall = true;
+            Debug.Log("Won't show Ad for " + time + " seconds");
             _instance.Invoke(nameof(ResetIgnoreInterstitialAdCall), time);
         }
 
         private void ResetIgnoreInterstitialAdCall()
         {
             _ignoreInterstitialAdCall = false;
+            Debug.Log("Will now show Ads again");
         }
     }
 }

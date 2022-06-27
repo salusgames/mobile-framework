@@ -9,40 +9,36 @@ namespace SalusGames.MobileFramework.Advertisements.Unity
 
         public UnityInterstitialAd(string androidAdUnitId, string iOsAdUnitId)
         {
-            Advertisement.AddListener(this);
-            
-            _adUnitId = (Application.platform == RuntimePlatform.IPhonePlayer) ? iOsAdUnitId : androidAdUnitId;
+			_adUnitId = (Application.platform == RuntimePlatform.IPhonePlayer) ? iOsAdUnitId : androidAdUnitId;
             LoadAd();
         }
         
         private void LoadAd()
         {
-            Debug.Log("Loading Ad: " + _adUnitId);
             Advertisement.Load(_adUnitId, this);
         }
         
         public void ShowAd()
         {
-            Debug.Log("Showing Ad: " + _adUnitId);
-            Advertisement.Show(_adUnitId);
+            Debug.Log("Showing Ad. ID: " + _adUnitId);
+            Advertisement.Show(_adUnitId, this);
             Time.timeScale = 0;
-            LoadAd();
         }
         
         public void OnUnityAdsAdLoaded(string adUnitId)
         {
-            Debug.Log("Loaded Ad: " + _adUnitId);
+            Debug.Log("Ad loaded and ready. ID: " + _adUnitId);
         }
  
         public void OnUnityAdsFailedToLoad(string adUnitId, UnityAdsLoadError error, string message)
         {
-            Debug.Log($"Error loading Ad Unit: {adUnitId} - {error.ToString()} - {message}");
+            Debug.Log($"Error loading Ad. ID: {adUnitId} - {error.ToString()} - {message}");
             Time.timeScale = 1;
         }
 
 		public void OnUnityAdsShowFailure(string adUnitId, UnityAdsShowError error, string message)
     	{
-        	Debug.Log($"Error showing Ad Unit {adUnitId}: {error.ToString()} - {message}");
+        	Debug.Log($"Error showing Ad. ID: {adUnitId}: {error.ToString()} - {message}");
         	Time.timeScale = 1;
     	}
  
@@ -51,7 +47,8 @@ namespace SalusGames.MobileFramework.Advertisements.Unity
     	public void OnUnityAdsShowComplete(string adUnitId, UnityAdsShowCompletionState showCompletionState) 
 		{ 
 			Time.timeScale = 1;
-            Debug.Log("Ad Finished" + _adUnitId);
+            Debug.Log("Ad complete. ID: " + _adUnitId);
+            LoadAd();
 		}
     }
 }
