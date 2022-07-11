@@ -20,25 +20,25 @@ namespace SalusGames.MobileFramework.Advertisements.Unity
         
         public void ShowAd()
         {
-            Debug.Log("Showing Ad. ID: " + _adUnitId);
+            Debug.Log("Salus Games Unity Ad Manager: Showing Ad. ID " + _adUnitId);
             Advertisement.Show(_adUnitId, this);
             Time.timeScale = 0;
         }
         
         public void OnUnityAdsAdLoaded(string adUnitId)
         {
-            Debug.Log("Ad loaded and ready. ID: " + _adUnitId);
+            Debug.Log("Salus Games Unity Ad Manager: Ad loaded and ready. ID " + _adUnitId);
         }
  
         public void OnUnityAdsFailedToLoad(string adUnitId, UnityAdsLoadError error, string message)
         {
-            Debug.Log($"Error loading Ad. ID: {adUnitId} - {error.ToString()} - {message}");
+            Debug.Log($"Salus Games Unity Ad Manager: Error loading Ad. ID {adUnitId} - {error.ToString()} - {message}");
             Time.timeScale = 1;
         }
 
 		public void OnUnityAdsShowFailure(string adUnitId, UnityAdsShowError error, string message)
     	{
-        	Debug.Log($"Error showing Ad. ID: {adUnitId}: {error.ToString()} - {message}");
+        	Debug.Log($"Salus Games Unity Ad Manager: Error showing Ad. ID {adUnitId}: {error.ToString()} - {message}");
         	Time.timeScale = 1;
     	}
  
@@ -47,7 +47,7 @@ namespace SalusGames.MobileFramework.Advertisements.Unity
     	public void OnUnityAdsShowComplete(string adUnitId, UnityAdsShowCompletionState showCompletionState) 
 		{ 
 			Time.timeScale = 1;
-            Debug.Log("Ad complete. ID: " + _adUnitId);
+            Debug.Log("Salus Games Unity Ad Manager: Ad complete. ID " + _adUnitId);
             LoadAd();
 		}
     }
