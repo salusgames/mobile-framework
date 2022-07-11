@@ -28,12 +28,12 @@ namespace SalusGames.MobileFramework.Advertisements.Unity
             set
             {
                 ConfigController.DisableAds = value;
-				Disabled(value);
+				_instance.Disable(value);
             }
             get => ConfigController.DisableAds;
         }
 
-		private void Disabled(bool disabled)
+		private void Disable(bool disabled)
 		{
 			if(disabled) Debug.Log("Salus Games Unity Ad Manager: Disabling UnityAdsManager, ads won't be shown");
 			else
@@ -56,8 +56,7 @@ namespace SalusGames.MobileFramework.Advertisements.Unity
             _instance = this;
             DontDestroyOnLoad(gameObject);
             AskForTrackingIos();
-
-            ActiveState(AdsDisabled);
+            _instance.Disable(AdsDisabled);
         }
 
         private void AskForTrackingIos()
