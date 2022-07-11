@@ -19,7 +19,11 @@ namespace SalusGames.MobileFramework.Advertisements.Unity.Config
         public static bool DisableAds
         {
             get => _configData.DisableAds;
-            set => _configData.DisableAds = value;
+            set
+            {
+                _configData.DisableAds = value;
+                Save();
+            } 
         }
 
         private static void Save()
