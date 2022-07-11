@@ -28,12 +28,22 @@ namespace SalusGames.MobileFramework.Advertisements.Unity
             set
             {
                 ConfigController.DisableAds = value;
+				ActiveState(value);
             }
-            get
-            {
-                return ConfigController.DisableAds;
-            }
+            get => ConfigController.DisableAds;
         }
+
+		private void ActiveState(bool state)
+		{
+			if(value) Debug.Log("Salus Games Unity Ad Manager: Disabling UnityAdsManager, ads won't be shown");
+			else
+			{
+ 				Debug.Log("Salus Games Unity Ad Manager: Enabling UnityAdsManager, ads will be shown");
+				InitializeAds();
+            
+            	if(_delayInitialAd > 0) StartInterstitialAdWaitTimer(_delayInitialAd);
+			}
+		}
         
         private void Start()
         {
@@ -47,15 +57,7 @@ namespace SalusGames.MobileFramework.Advertisements.Unity
             DontDestroyOnLoad(gameObject);
             AskForTrackingIos();
 
-            if (AdsDisabled)
-            {
-                Debug.Log("Salus Games Unity Ad Manager: Disabling UnityAdsManager, ads won't be shown");
-                return;
-            }
-            
-            InitializeAds();
-            
-            if(_delayInitialAd > 0) StartInterstitialAdWaitTimer(_delayInitialAd);
+            ActiveState(AdsDisabled);
         }
 
         private void AskForTrackingIos()
