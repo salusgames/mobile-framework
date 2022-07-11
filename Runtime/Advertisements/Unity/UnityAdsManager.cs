@@ -28,14 +28,14 @@ namespace SalusGames.MobileFramework.Advertisements.Unity
             set
             {
                 ConfigController.DisableAds = value;
-				ActiveState(value);
+				Disabled(value);
             }
             get => ConfigController.DisableAds;
         }
 
-		private void ActiveState(bool state)
+		private void Disabled(bool disabled)
 		{
-			if(value) Debug.Log("Salus Games Unity Ad Manager: Disabling UnityAdsManager, ads won't be shown");
+			if(disabled) Debug.Log("Salus Games Unity Ad Manager: Disabling UnityAdsManager, ads won't be shown");
 			else
 			{
  				Debug.Log("Salus Games Unity Ad Manager: Enabling UnityAdsManager, ads will be shown");
