@@ -22,7 +22,7 @@ Add the UnityAdsManager.cs script to a gameobject in the first loaded scene in t
 To show an interstitial advert include `using SalusGames.MobileFramework.Advertisements.Unity;` at the top of your script and use `UnityAdsManager.ShowInterstitialAd(float waitTime);` to show the advert and wait for the duration of `waitTime` before showing another interstitial advert 
 
 ### Disabling/Enabling Ads
-You can disable & enable the showing of ads by changing the `AdsDisabled` property.
+You can disable & enable the showing of ads by changing the `UnityAdsManager.AdsDisabled` property.
 
 ## Store Reviews
 Include `using SalusGames.MobileFramework.Review;` at the top of your script and use `StoreReview.Request();` to prompt for a review.
