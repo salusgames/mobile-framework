@@ -7,6 +7,7 @@ This package simplifies common used packages and systems used in mobile games
   - [Setup](https://github.com/salusgames/mobile-framework#setup)
   - [Showing an intersistial ad](https://github.com/salusgames/mobile-framework#showing-an-intersistial-ad)
   - [Disabling/Enabling Ads](https://github.com/salusgames/mobile-framework#disablingenabling-ads)
+  - [App Tracking Transparency for iOS 14+](https://github.com/salusgames/mobile-framework#app-tracking-transparency-for-ios-14)
 - [Store Reviews](https://github.com/salusgames/mobile-framework#store-reviews)
 
 # Installation
@@ -23,6 +24,9 @@ To show an interstitial advert include `using SalusGames.MobileFramework.Adverti
 
 ### Disabling/Enabling Ads
 You can disable & enable the showing of ads by changing the `UnityAdsManager.AdsDisabled` property. This is set to `false` by default
+
+### App Tracking Transparency for iOS 14+
+This package includes a post build script to add the needed values in the info.plist file in Xcode.
 
 ## Store Reviews
 Include `using SalusGames.MobileFramework.Review;` at the top of your script and use `StoreReview.Request();` to prompt for a review.
