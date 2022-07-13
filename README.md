@@ -2,12 +2,12 @@
 
 This package simplifies common used packages and systems used in mobile games
 
-- [Installation](https://github.com/salusgames/mobile-framework/main/README.md#installation)
-- [Unity Ads](https://github.com/salusgames/mobile-framework/main/README.md#unity-ads)
-  - [Setup](https://github.com/salusgames/mobile-framework/main/README.md#setup)
-  - [Showing an intersistial ad](https://github.com/salusgames/mobile-framework/main/README.md#showing-an-intersistial-ad)
-  - [Disabling/Enabling Ads](https://github.com/salusgames/mobile-framework/main/README.md#disablingenabling-ads)
-- [Store Reviews](https://github.com/salusgames/mobile-framework/main/README.md#store-reviews)
+- [Installation](https://github.com/salusgames/mobile-framework#installation)
+- [Unity Ads](https://github.com/salusgames/mobile-framework#unity-ads)
+  - [Setup](https://github.com/salusgames/mobile-framework#setup)
+  - [Showing an intersistial ad](https://github.com/salusgames/mobile-framework#showing-an-intersistial-ad)
+  - [Disabling/Enabling Ads](https://github.com/salusgames/mobile-framework#disablingenabling-ads)
+- [Store Reviews](https://github.com/salusgames/mobile-framework#store-reviews)
 
 # Installation
 To install simply add `https://github.com/salusgames/mobile-framework.git` to the package manager in Unity
