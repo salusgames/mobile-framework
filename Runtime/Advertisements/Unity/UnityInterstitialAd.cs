@@ -20,9 +20,7 @@ namespace SalusGames.MobileFramework.Advertisements.Unity
         
         public void ShowAd()
         {
-            Debug.Log("Salus Games Unity Ad Manager: Showing Ad. ID " + _adUnitId);
-            Advertisement.Show(_adUnitId, this);
-            Time.timeScale = 0;
+	        Advertisement.Show(_adUnitId, this);
         }
         
         public void OnUnityAdsAdLoaded(string adUnitId)
@@ -41,14 +39,20 @@ namespace SalusGames.MobileFramework.Advertisements.Unity
         	Debug.Log($"Salus Games Unity Ad Manager: Error showing Ad. ID {adUnitId}: {error.ToString()} - {message}");
         	Time.timeScale = 1;
     	}
- 
-    	public void OnUnityAdsShowStart(string adUnitId) { }
-   	 	public void OnUnityAdsShowClick(string adUnitId) { }
-    	public void OnUnityAdsShowComplete(string adUnitId, UnityAdsShowCompletionState showCompletionState) 
+
+		public void OnUnityAdsShowStart(string adUnitId)
+		{
+			Debug.Log("Salus Games Unity Ad Manager: Showing Ad. ID " + _adUnitId);
+			Time.timeScale = 0;
+		}
+		
+		public void OnUnityAdsShowComplete(string adUnitId, UnityAdsShowCompletionState showCompletionState) 
 		{ 
 			Time.timeScale = 1;
             Debug.Log("Salus Games Unity Ad Manager: Ad complete. ID " + _adUnitId);
             LoadAd();
 		}
+		
+		public void OnUnityAdsShowClick(string adUnitId) { }
     }
 }
