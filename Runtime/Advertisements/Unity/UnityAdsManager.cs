@@ -104,6 +104,12 @@ namespace SalusGames.MobileFramework.Advertisements.Unity
                 Debug.Log("Salus Games Unity Ad Manager: Won't show an Ad as not enough time has passed");
                 return;
             }
+
+            if (_unityInterstitialAd == null)
+            {
+                Debug.LogWarning("Salus Games Unity Ad Manager: Can't show ad due to SDK stuck initilizing. Possible ad blocker");
+                return;
+            }
             
             StartInterstitialAdWaitTimer(waitTime);
             _unityInterstitialAd.ShowAd();
