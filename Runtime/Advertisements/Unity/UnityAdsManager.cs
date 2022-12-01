@@ -71,6 +71,10 @@ namespace SalusGames.MobileFramework.Advertisements.Unity
         
         private void InitializeAds()
         {
+#if UNITY_STANDALONE
+            Debug.Log("Salus Games Unity Ad Manager: Unity Ads Initialization Failed: Runtime platform does not support ads");
+            return;
+#endif
             var gameId = (Application.platform == RuntimePlatform.IPhonePlayer) ? _iosGameId : _androidGameId;
             Advertisement.Initialize(gameId, _testMode, this);
         }
